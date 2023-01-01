@@ -1,0 +1,381 @@
+SLIP 1
+Q2 A)
+import pandas as pd
+import numpy as np
+import scipy.stats as sc
+import matplotlib.pyplot as plt
+
+df=pd.read_csv("iris.csv")
+df
+
+ax=plt.subplots(1,1,figsize=(10,8))
+df['class'].value_counts().plot.pie(explode=[0.1,0.1,0.1],autopct='%1.1f%%',shadow=True,figsize=(10,8))
+plt.title("Iris Species ")
+plt.show()
+
+Q2 B)
+df=pd.read_csv("wineequality-red.csv")
+df
+
+df.describe()	or print(df.describe())
+...............................................
+SLIP 2
+Q2 A)
+df=pd.read_csv("Data.csv")
+df
+
+df['Age'].fillna(df['Age'].mean())
+df['Salary'].fillna(df['Salary'].mean())
+
+Q2 B)
+plt.plot(df.name,df.salary)
+plt.show()
+
+Q2 C)
+//df=pd.read_csv("HeightWeight.csv")
+HeightWeight={'Height':[1,2,3,4,6,8,3,6,0,2,6,8,......],'Weight':[5,9,3,0,5,.....]}
+df=pd.DataFrame(HeightWeight)
+
+df.head(10)
+df.tail(10)
+df.rand(20)
+df.shape()
+...................................................................
+SLIP 3
+Q2 A)
+df=pd.read_csv("iris.csv")
+df
+
+plt.boxplot(df)
+
+Q2 B)
+df=pd.read_csv("HeightWeight.csv")
+df
+
+df.describe()	or print(df.describe())
+..........................................................................
+SLIP 4
+Q2 A)
+df=np.random.rand(50)
+df
+
+plt.plot(df)
+
+x=np.random.rand(25)
+y=np.random.rand(25)
+plt.scatter(x,y)
+
+plt.hist(df,facecolor='y',linewidth=2,edgecolor='k')
+
+plt.boxplot(df)
+
+Q2 B)
+df=pd.read_csv("User_Data.csv")
+df
+
+df.shape
+
+len(df.axes[0])
+
+len(df.axes[1])
+
+df.dtypes
+
+df.describe()
+...............................................
+SLIP 5
+
+	(SAME AS SLIP 4)
+
+SLIP 6
+
+	(SAME AS SLIP 2)
+.................................................
+SLIP 7
+
+from sklearn.preprocessing import OneHotEncoder
+enc=OneHotEncoder(handle_unknown='ignore')
+enc_df=pd.DataFrame(enc.fit_transform(df[['Country']]).toarray())
+enc_df
+
+from sklearn.preprocessing import LabelEncoder
+le=LabelEncoder()
+df['Purchased']=le.fit_transform(df['Purchased'])
+df
+......................................................
+SLIP 8
+Q2)
+
+#Creating a DataFrame
+d = {'C01':[1,3,7,4],'C02':[12,2,7,1],'C03':[22,34,-11,9]}
+df2 = pd.DataFrame(d)
+print("\n ORIGINAL DATA VALUES")
+print("------------------------")
+print(df2)
+
+#Method 4: Standardizing Data
+print("\n Standardizing Data ")
+print("----------------------")
+X_train = np.array([[ 1., -1., 2.],[ 2., 0., 0.],[ 0., 1., -1.]])
+print(" Orginal Data \n", X_train)
+print("\n Initial Mean : ", s.tmean(X_train).round(2))
+print(" Initial Standard Deviation : ",round(X_train.std(),2))
+X_scaled = preprocessing.scale(X_train)
+X_scaled.mean(axis=0)
+X_scaled.std(axis=0)
+print("\n Standardized Data \n", X_scaled.round(2))
+print("\n Scaled Mean : ",s.tmean(X_scaled).round(2))
+print(" Scaled Standard Deviation : ",round(X_scaled.std(),2))
+
+...........................................................................
+SLIP 9
+Q2 A)
+	(SAME AS SLIP 4)
+Q2 B)
+
+sub_name=["Ds","Python","c","java"]
+sub_marks=[78,67,87,67]
+plt.pie(sub_marks,labels=sub_name)
+
+Q2 C)
+
+df=pd.read_csv("wineequality-red.csv")
+df
+
+df.describe()
+
+df.shape
+
+df.head(3)
+
+..............................................................
+SLIP 10
+
+Q2 A)
+
+df=pd.read_csv("HeightWeight.csv")
+df
+
+df["Height"].mean()
+
+df["Weight"].median()
+
+Q2 B)
+
+from scipy.spatial.distance import cityblock
+import pandas as pd
+
+#define DataFrame
+df=pd.DataFrame({'A':[2,4,4,6],'B':[5,5,7,8],'C':[9,12,12,13]})
+
+#calculate Manhattan distance between columns A and B
+cityblock(df.A,df.B)
+
+
+..........................................
+SLIP 11
+	(SAME AS SLIP 1)
+
+SLIP 12
+
+Q2 A)
+	(SAME AS SLIP 4)
+
+Q2 B)
+df=pd.DataFrame(columns=['name','salary','department'])
+
+df.loc[0]=['Bharat',20000,'Sales']
+df.loc[1]=['Mitali',61000,'Purchase']
+df.loc[2]=['Sakshi',61000,'Account']
+df.loc[3]=['Aditya',90000,'Sales']
+df.loc[4]=['Rahul',None,'ABC']
+df.loc[5]=['Ganesh',11000,None]
+df.loc[6]=['Siddhi',20000,'DEF']
+df.loc[7]=['Tanu',None,None]
+df.loc[8]=['Priya',45000,'XYZ']
+df.loc[9]=['Vrushali',50000,'Purchase']
+
+df.dropna()
+df
+
+..............................................................
+SLIP 13
+Q2 A)
+
+from sklearn import preprocessing
+import seaborn as sns
+
+iris=pd.read_csv("iris.csv")
+print(iris.head())
+
+le=preprocessing.LabelEncoder()
+iris.species=le.fit_transform(iris.species)
+print(iris.head())
+
+sns.scatterplot(data=iris,x='petal_length',y='petal_width',hue='species')
+plt.plot()
+
+
+
+Q2 B)
+x=[[0,1],[2,3]]
+np.max(x)
+np.min(x)
+
+...................................................................
+SLIP 14
+Q2 A)
+
+import numpy as np
+x=np.arange(5)
+print(x)
+weights=np.arange(1,6)
+r1=np.average(x,weights=weights)
+print(r1)
+
+Q2 B)
+
+df=pd.read_csv("advertising.csv")
+df
+
+df.describe()	or print(df.describe())
+
+.................................................................
+SLIP 15
+Q2 A)
+	(SAME AS SLIP 4)
+
+Q2 B)
+	(SAME AS SLIP 9)
+
+........................................................................
+SLIP 16
+Q2 A)
+	(SAME AS SLIP 9)
+	plt.bar(sub_name,sub_marks)
+Q2 B)
+
+import pandas as pd
+import numpy as np
+student  = {'name': ['Anastasia', 'Dima', 'Katherine', 'James', 'Emily', 'Michael', 'Matthew', 'Laura', 'Kevin', 'Jonas'],
+            'graduation percentage': [80,70,89,55,80,66,77,55,45,88],
+            'age': [21, 33, 22, 23, 22, 13, 19, 17, 20, 19]}
+df = pd.DataFrame(student)
+print("\nMean age for each different student in data frame:")
+print(df['age'].mean())
+print("\nMean percentage for each different student in data frame:")
+print(df['graduation percentage'].mean())
+
+.............................................................................
+
+SLIP 17
+Q2 A)
+	(SAME AS SLIP 13)
+
+Q2 B)
+	(SAME AS SLIP 12)
+
+SLIP 18
+Q2 A)
+df=pd.read_csv("iris.csv")
+df
+
+plt.boxplot(df)
+
+Q2 B)
+	(SAME AS SLIP 2)
+
+SLIP 19
+
+REFER SLIP 12 Q2 B)
+Q2) 2
+list(df.columns)
+
+Q2) 3
+
+duplicate=df[df.duplicated()]
+print("Duplicate Rows")
+duplicate
+
+df.isnull()
+
+df["Remark"]=None
+print("DataFrame after addding the Remark column")
+df
+
+
+...............................................................
+SLIP 20
+continue after q2 a) 
+plt.boxplot(df)
+fig=plt.figure(figsize=(10,7))
+plt.show()
+
+
+....................................................
+SLIP 21 & 24
+Q2 A)
+df=pd.read_csv("iris.csv")
+df
+
+import seaborn as sns
+ax=plt.subplots(1,1,figsize=(10,8))
+sns.countplot('class',data=df)
+plt.title("Iris Species Count")
+plt.show()
+
+x=df["sepallength"]
+
+plt.hist(x,bins=20,color="aqua")
+plt.title("Sepal length in cm")
+plt.xlabel("Sepal_length_cm")
+plt.ylabel("Count")
+
+.........................................................
+SLIP 22 & 23
+
+#Creating a DataFrame
+d = {'C01':[1,3,7,4],'C02':[12,2,7,1],'C03':[22,34,-11,9]}
+df2 = pd.DataFrame(d)
+print("\n ORIGINAL DATA VALUES")
+print("------------------------")
+print(df2)
+
+from sklearn import preprocessing
+#Method 1: Rescaling Data
+print("\n\n Data Scaled Between 0 to 1")
+data_scaler = preprocessing.MinMaxScaler(feature_range = (0, 1))
+data_scaled = data_scaler.fit_transform(df2)
+print("\n Min Max Scaled Data ")
+print("-----------------------")
+print(data_scaled.round(2))
+
+import scipy.stats as s
+#Method 2: Normalization rescales such that sum of each row is 1.
+dn = preprocessing.normalize(df2, norm = 'l1')
+print("\n L1 Normalized Data ")
+print(" ----------------------")
+print(dn.round(2))
+
+#Method 3: Binarize Data (Make Binary)
+data_binarized = preprocessing.Binarizer(threshold=5).transform(df2)
+print("\n Binarized data ")
+print(" -----------------")
+print(data_binarized)
+
+#Method 4: Standardizing Data
+print("\n Standardizing Data ")
+print("----------------------")
+X_train = np.array([[ 1., -1., 2.],[ 2., 0., 0.],[ 0., 1., -1.]])
+print(" Orginal Data \n", X_train)
+print("\n Initial Mean : ", s.tmean(X_train).round(2))
+print(" Initial Standard Deviation : ",round(X_train.std(),2))
+X_scaled = preprocessing.scale(X_train)
+X_scaled.mean(axis=0)
+X_scaled.std(axis=0)
+print("\n Standardized Data \n", X_scaled.round(2))
+print("\n Scaled Mean : ",s.tmean(X_scaled).round(2))
+print(" Scaled Standard Deviation : ",round(X_scaled.std(),2))
+
+
+
