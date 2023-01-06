@@ -1,0 +1,8 @@
+{%extends 'index.html'%}
+{%block content%}
+    {%for i in post%}
+        <h1>{{i.title}}</h1>
+        <small>{{i.date_time}}</small><br>
+        <a href="{% url 'post_detail' i.slug %}">Read More</a>
+    {%endfor%}
+{%endblock%}
